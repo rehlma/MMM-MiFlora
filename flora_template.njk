@@ -1,0 +1,48 @@
+<table class="small floraTable">
+    <thead>
+        <tr>
+            <th colspan="2" width="50%">
+                <i class="fa fa-home"></i>
+            </th>
+            <th width="25%">
+                <i class="fa fa-tint"></i>
+            </th>
+            <th width="25%">
+                <i class="fa fa-seedling"></i>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for sensor in sensorData %}
+            {% set values = sensor.sensorValues %}
+            <tr>
+                <td>{{ sensor.name }}</td>
+                <td>
+                    {% set battery = sensor.firmwareInfo.battery %}
+
+                    {% if battery <= 5 %}
+                        <i class="fa fa-battery-empty"></i>
+                    {% elif battery <= 20 %}
+                        <i class="fa fa-battery-quarter"></i>
+                    {% endif %}
+                </td>
+                <td>
+                    <div>{{ values.moisture }}%</div>
+                    <div class="xsmall">
+                        <i class="fa {{ values.moistureIcon }}"></i>
+                        <span>
+                            {% if values.moistureDiff > 0 %}+{% endif%}{{values.moistureDiff}}</span>
+                        </div>
+                    </td>
+                    <td>
+                        <div>{{ values.fertility }}</div>
+                        <div class="xsmall">
+                            <i class="fa {{ values.fertilityIcon }}"></i>
+                            <span>
+                                {% if values.fertilityDiff > 0 %}+{% endif%}{{values.fertilityDiff}}</span>
+                            </div>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>

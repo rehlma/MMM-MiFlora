@@ -1,0 +1,29 @@
+{
+	"name": "mmm-miflora",
+	"version": "1.0.0",
+	"description": "Xiaomi Mi Flora Module",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/rehlma/MMM-MiFlora"
+	},
+	"keywords": [
+		"magic mirror",
+		"magic mirror 2",
+		"smart mirror",
+		"mi flora",
+		"miflora",
+		"module"
+	],
+	"author": {
+		"name": "Maikel Rehl",
+		"email": "rehlmaikel@gmail.com",
+		"url": "https://github.com/rehlma"
+	},
+	"license": "MIT",
+	"engines": {
+		"node": ">=8"
+	},
+	"dependencies": {
+		"noble": "^1.9.1"
+	}
+}
