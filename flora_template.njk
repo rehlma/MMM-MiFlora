@@ -28,19 +28,21 @@
                 </td>
                 <td>
                     <div>{{ values.moisture }}%</div>
-                    <div class="xsmall">
-                        <i class="fa {{ values.moistureIcon }}"></i>
-                        <span>
-                            {% if values.moistureDiff > 0 %}+{% endif%}{{values.moistureDiff}}</span>
-                        </div>
+                    <input type="range" class="range" 
+                        name="moisture" 
+                        min="{{ values.moistureMin }}" 
+                        max="{{ values.moistureMax }}" 
+                        value="{{ values.moisture }}"
+                        />
                     </td>
                     <td>
                         <div>{{ values.fertility }}</div>
-                        <div class="xsmall">
-                            <i class="fa {{ values.fertilityIcon }}"></i>
-                            <span>
-                                {% if values.fertilityDiff > 0 %}+{% endif%}{{values.fertilityDiff}}</span>
-                            </div>
+                        <input type="range" class="range" 
+                            name="moisture" 
+                            min="{{ values.moistureMin }}" 
+                            max="{{ values.moistureMax }}" 
+                            value="{{ values.moisture }}"
+                            />
                         </td>
                     </tr>
                 {% endfor %}
