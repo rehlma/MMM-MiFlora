@@ -79,8 +79,12 @@ Module.register("MMM-MiFlora", {
 				var values = sensor.sensorValues;
 				values.moistureDiff = self.getDiff(values.moisture, match.moistureMin, match.moistureMax);
 				values.moistureIcon = self.getIcon(values.moisture, match.moistureMin, match.moistureMax);
+				values.moistureMin = match.moistureMin;
+				values.moistureMax = match.moistureMax;
 				values.fertilityDiff = self.getDiff(values.fertility, match.fertilityMin, match.fertilityMax);
 				values.fertilityIcon = self.getIcon(values.fertility, match.fertilityMin, match.fertilityMax);
+				values.fertilityMin = match.fertilityMin;
+				values.fertilityMin = match.fertilityMin;
 				sensor.sensorValues = values;
 			}
 		});
