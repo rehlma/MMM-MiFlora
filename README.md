@@ -2,7 +2,7 @@
 
 This is a MM Module for the Xiaomi Mi Flora.
 
-![alt text](./Screenshot.jpg "MMM-MiFlora")
+![MMM-MiFlora.jpg](./Screenshot.jpg "MMM-MiFlora")
 
 ## Prerequest
 Follow Noble Prerequest https://github.com/noble/noble#prerequisites
@@ -25,7 +25,7 @@ npm install
 ```
 
 ### Test connection
-```javascript
+```
 // The easiest way
 node ble_wrapper.js
 
