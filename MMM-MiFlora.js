@@ -98,9 +98,9 @@ Module.register("MMM-MiFlora", {
 	},
 
 	getIcon: function(value, min, max) {
-		if (value < min) {
+		if (value > min) {
 			return "fa-arrow-up";
-		} else if (value > max) {
+		} else if (value < max) {
 			return "fa-arrow-down";
 		} else {
 			return "fa-seedling";
