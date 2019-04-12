@@ -94,7 +94,7 @@ Module.register("MMM-MiFlora", {
 	getDiff: function(value, min, max) {
 		var range = max - min;
 		var bestValue = min + range / 2;
-		return Math.round(bestValue - value);
+		return Math.round(value - bestValue);
 	},
 
 	getIcon: function(value, min, max) {
