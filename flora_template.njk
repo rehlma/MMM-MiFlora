@@ -27,24 +27,30 @@
                     {% endif %}
                 </td>
                 <td>
-                    <div>{{ values.moisture }}%</div>
-                    <input type="range" class="range" 
-                        name="moisture" 
-                        min="{{ values.moistureMin }}" 
-                        max="{{ values.moistureMax }}" 
-                        value="{{ values.moisture }}"
-                        />
-                    </td>
-                    <td>
-                        <div>{{ values.fertility }}</div>
+                    <div class="value">{{ values.moisture }}%</div>
+                    <div class="range-section">
+                        <input type="range" class="range"
+                            name="moisture" 
+                            min="{{ values.moistureMin }}" 
+                            max="{{ values.moistureMax }}" 
+                            value="{{ values.moisture }}"
+                            />
+                        <div class="range-bottom"></div>
+                    </div>
+                </td>
+                <td>
+                    <div class="value">{{ values.fertility }}</div>
+                    <div class="range-section">
                         <input type="range" class="range" 
                             name="moisture" 
                             min="{{ values.moistureMin }}" 
                             max="{{ values.moistureMax }}" 
                             value="{{ values.moisture }}"
                             />
-                        </td>
-                    </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+                        <div class="range-bottom"></div>
+                    </div>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
