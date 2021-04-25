@@ -10,18 +10,18 @@ const { spawn } = require("child_process");
 
 module.exports = NodeHelper.create({
 	// Override start method.
-	start: function() {
+	start: function () {
 		this.sendSocketNotification("init");
 
 		console.log("Starting node helper for: " + this.name);
 	},
 
 	// Override socketNotificationReceived method.
-	socketNotificationReceived: function(notification, payload) {
+	socketNotificationReceived: function (notification, payload) {
 		console.log("socketNotificationReceived node_helper " + notification);
 		if (notification === "MMM_MIFLORA_START") {
 			const args = ["./modules/MMM-MiFlora/ble_wrapper.js", "--duration=60", "--interval=" + payload.updateInterval];
-			payload.sensors.forEach(sensor => {
+			payload.sensors.forEach((sensor) => {
 				args.push("--address=" + sensor.address);
 			});
 
@@ -32,10 +32,10 @@ module.exports = NodeHelper.create({
 		}
 	},
 
-	startStream: function(flora) {
+	startStream: function (flora) {
 		var self = this;
 
-		flora.stdout.on("data", stream => {
+		flora.stdout.on("data", (stream) => {
 			var data = String(stream);
 			console.log(data);
 
@@ -47,7 +47,7 @@ module.exports = NodeHelper.create({
 		});
 
 		// since these are streams, you can pipe them elsewhere
-		flora.stderr.on("data", err => {
+		flora.stderr.on("data", (err) => {
 			console.error(`exec error: ${err}`);
 			return;
 		});
