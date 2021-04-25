@@ -1,24 +1,24 @@
 .floraTable {
-	border-collapse: collapse;
-	border-spacing: 1px;
-	display: table;
+  border-collapse: collapse;
+  border-spacing: 1px;
+  display: table;
 }
 
 .floraTable td,
 .floraTable th {
-	text-align: right;
-	padding: 0 5px 0 5px;
+  text-align: right;
+  padding: 0 5px 0 5px;
 }
 
 .floraTable td:first-child,
 .floraTable th:first-child {
-	padding: 0 5px 0 0;
-	text-align: left;
+  padding: 0 5px 0 0;
+  text-align: left;
 }
 
 .floraTable td:last-child,
 .floraTable th:last-child {
-	padding: 0 0 0 5px;
+  padding: 0 0 0 5px;
 }
 
 .floraTable td > div {

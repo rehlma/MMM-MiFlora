@@ -30,6 +30,11 @@ const floraConf = {
 	ignoreUnknown: setAdresses().length !== 0
 };
 
+/**
+ * Set all addresses from arguments
+ *
+ * @returns {Array} Array of all MiFlora addresses
+ */
 function setAdresses() {
 	if (Array.isArray(args.address)) {
 		return args.address;
@@ -40,40 +45,48 @@ function setAdresses() {
 	}
 }
 
+/**
+ * Initialize connection
+ */
 function initConnection() {
 	console.log("Start discovery for " + floraConf.addresses);
 	isConnected = false;
 	connectedSensors = [];
 
-	miflora.discover(floraConf).then(devices => {
+	miflora.discover(floraConf).then((devices) => {
 		console.log("Found " + devices.length + " devices");
 
-		if (devices.length == 0) {
+		if (devices.length === 0) {
 			console.log("Retry");
 			initConnection();
 		}
 
-		devices.forEach(device => {
+		devices.forEach((device) => {
 			console.log(device.name + " [" + device.address + "]");
 			connect(device);
 		});
 	});
 }
 
+/**
+ * Connect to a device
+ *
+ * @param {device} device to connect to
+ */
 function connect(device) {
 	device
 		.connect()
-		.then(_ => {
+		.then((_) => {
 			console.log("Connected");
 			connectedSensors.push(device);
 		})
-		.then(_ => {
+		.then((_) => {
 			console.log("All devices connected");
 			isConnected = true;
 			// Initial data
 			publishData();
 		})
-		.catch(reason => {
+		.catch((reason) => {
 			console.log(reason);
 			console.log("Retry after 3 sec");
 			setTimeout(() => {
@@ -82,7 +95,11 @@ function connect(device) {
 		});
 }
 
-// returns a Promise
+/**
+ * Gather all sensot data
+ *
+ * @returns {Promise} which includes all sensor data
+ */
 function getData() {
 	if (!isConnected) {
 		return;
@@ -90,31 +107,34 @@ function getData() {
 
 	var collect = [];
 
-	connectedSensors.forEach(sensor => {
+	connectedSensors.forEach((sensor) => {
 		collect.push(sensor.query());
 	});
 
 	return Promise.all(collect);
 }
 
+/**
+ * Publish device data as JSON to stdout
+ */
 function publishData() {
 	if (!isConnected) {
 		return;
 	}
 	getData()
-		.then(data => {
+		.then((data) => {
 			process.stdout.write(JSON.stringify(data));
 		})
-		.catch(reason => {
+		.catch((reason) => {
 			console.log(reason);
 		});
 }
 
-(function() {
+(function () {
 	// Connect devices
 	initConnection();
 
-	setInterval(function() {
+	setInterval(function () {
 		publishData();
 	}, conf.interval * 60 * 1000);
 })();

@@ -25,7 +25,7 @@ Module.register("MMM-MiFlora", {
 
 	currentData: false,
 
-	start: function() {
+	start: function () {
 		Log.info("Starting module: " + this.name);
 
 		// YOU HAVE TO SEND THIS FIRST INIT MESSAGE!!!!!!
@@ -33,7 +33,7 @@ Module.register("MMM-MiFlora", {
 	},
 
 	// Override socket notification handler.
-	socketNotificationReceived: function(notification, payload) {
+	socketNotificationReceived: function (notification, payload) {
 		console.log("socketNotificationReceived " + notification);
 		if (notification === "MMM_MIFLORA_CONNECTED") {
 			this.connected = payload;
@@ -54,26 +54,26 @@ Module.register("MMM-MiFlora", {
 		this.updateDom();
 	},
 
-	getStyles: function() {
+	getStyles: function () {
 		return ["styles.css"];
 	},
 
 	// Select the template depending on the display type.
-	getTemplate: function() {
+	getTemplate: function () {
 		return "flora_template.njk";
 	},
 
 	// Add all the data to the template.
-	getTemplateData: function() {
+	getTemplateData: function () {
 		return {
 			sensorData: this.currentData
 		};
 	},
 
-	prepareData: function(sensorData) {
+	prepareData: function (sensorData) {
 		var self = this;
-		sensorData.forEach(sensor => {
-			var match = self.config.sensors.find(best => best.address == sensor.address);
+		sensorData.forEach((sensor) => {
+			var match = self.config.sensors.find((best) => best.address === sensor.address);
 			if (match !== undefined) {
 				sensor.name = match.name;
 				var values = sensor.sensorValues;
@@ -91,13 +91,13 @@ Module.register("MMM-MiFlora", {
 		return sensorData;
 	},
 
-	getDiff: function(value, min, max) {
+	getDiff: function (value, min, max) {
 		var range = max - min;
 		var bestValue = min + range / 2;
 		return Math.round(value - bestValue);
 	},
 
-	getIcon: function(value, min, max) {
+	getIcon: function (value, min, max) {
 		if (value > min) {
 			return "fa-arrow-up";
 		} else if (value < max) {
@@ -107,7 +107,7 @@ Module.register("MMM-MiFlora", {
 		}
 	},
 
-	c2f: function(celsius) {
+	c2f: function (celsius) {
 		return (celsius * 9) / 5 + 32;
 	}
 });
