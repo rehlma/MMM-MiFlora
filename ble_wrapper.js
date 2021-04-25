@@ -13,7 +13,7 @@
  * --address=c4:7c:8d:65:e7:23 Mac adress of the sensor. You can use it multiple times
  */
 
-var miflora = require("./lib/miflora.js");
+var miflora = require("miflora");
 
 // Getting arguments
 var args = require("minimist")(process.argv.slice(2));
