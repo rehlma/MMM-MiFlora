@@ -24,6 +24,8 @@
 		"node": ">=10"
 	},
 	"dependencies": {
-		"miflora": "1.0.6"
+		"noble": "^1.9.1",
+		"miflora": "1.0.6",
+		"minimist": "^1.2.7"
 	}
 }

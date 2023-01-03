@@ -10,12 +10,9 @@ Follow Noble Prerequest https://github.com/noble/noble#prerequisites
 Or use this Raspberry summary
 
 ### Install packages
+
 ```
 sudo apt-get install bluetooth bluez libbluetooth-dev libudev-dev
-```
-
-### Run without sudo
-```
 sudo setcap cap_net_raw+eip $(eval readlink -f `which node`)
 ```
 
